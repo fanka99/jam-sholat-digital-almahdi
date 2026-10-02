@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAM SHOLAT DIGITAL ALMAHDI - Smart Controller & Remote</title>
+    <meta name="description" content="Sistem Jam Sholat Digital Almahdi dengan dukungan multi-panel dan multi-chip (ESP8266, ESP32, ESP32-S2, ESP32-S3).">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">JAM SHOLAT ALMAHDI</div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="panduan.html">Panduan APK</a>
+            <a href="perakitan.html">Perakitan</a>
+            <a href="flashing.html">Flashing ESP32</a>
+            <a href="#varian">Varian</a>
+            <a href="#fitur">Fitur</a>
+            <a href="#lisensi">Lisensi</a>
+            <a href="https://t.me/LicjwsAlmahdi_bot" class="btn-primary-small" target="_blank">Hubungi Bot</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Jam Sholat Digital.<br><span class="highlight">AL-MAHDI Smart System.</span></h1>
+            <p>Solusi cerdas pengontrol Jam Sholat Digital (JWS) Almahdi. Dari ESP8266 ekonomis hingga ESP32-S3 Devkit ultra powerful. Nyala stabil 24/7 dengan dukungan penuh panel P10, P5, P2.5 RGB hingga LCD.</p>
+            <div class="cta-group">
+                <a href="#lisensi" class="btn-primary">Cara Dapat Lisensi</a>
+                <a href="#varian" class="btn-secondary">Lihat Varian</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="glass-card chip-card">
+                <div class="chip-icon">⚡</div>
+                <h3>Multi-Board Inside</h3>
+                <p>Support ESP8266, ESP32 Devkit, ESP32-S2, dan ESP32-S3. Koneksi WiFi native, setup super gampang.</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="varian" class="features" style="background: rgba(255,255,255,0.015); border-bottom: 1px solid var(--border-color); border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <h2>Varian Super Lengkap</h2>
+            <p>Pilih kombinasi panel dan board sesuai kebutuhan project atau budget lo.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">🟥</div>
+                <h3>P10 Mono (Single Color)</h3>
+                <p><strong>Scan Type:</strong> 1/4S & 1/8S<br><strong>Board:</strong> ESP8266 & ESP32-S2<br>Solusi paling ekonomis buat masjid. Cocok buat running text dan jadwal 1x8 atau ukuran memanjang lainnya.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🌈</div>
+                <h3>P10 RGB (Full Color)</h3>
+                <p><strong>Scan Type:</strong> 1/4S & 1/8S<br><strong>Board:</strong> ESP32 Devkit, ESP32-S2, ESP32-S3<br>Animasi lebih hidup dan warna-warni. Tampilan lebih modern buat masjid kekinian yang butuh visual menarik.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">✨</div>
+                <h3>P5 & P2.5 RGB (High Res)</h3>
+                <p><strong>Scan Type:</strong> 1/16S (P5) & 1/32S (P2.5)<br><strong>Board:</strong> ESP32 Devkit, ESP32-S2, ESP32-S3<br>Resolusi padat! Visual super tajam buat indoor. Pilihan premium tanpa pecah-pecah di jarak dekat.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📺</div>
+                <h3>LCD (16x2 & 20x4)</h3>
+                <p><strong>Interface:</strong> I2C Backpack (PCF8574)<br><strong>Board:</strong> ESP8266 Controller<br>Klasik, hemat daya (<2W), dan compact. Pas banget buat JWS rumahan, meja mihrab, atau mushola kecil.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fitur" class="features">
+        <div class="section-header">
+            <h2>10 Fitur Unggulan Flagship</h2>
+            <p>Bukan sekadar jam jadwal biasa. Sistem ini dirancang dari nol dengan teknologi cerdas terlengkap untuk kebutuhan masjid modern.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">📶</div>
+                <h3>Bypass Data Seluler (Android 10 - 15)</h3>
+                <p>Nggak perlu repot matiin paket data 4G/5G saat buka remote. Aplikasi otomatis mengunci jaringan ke Wi-Fi JWS tanpa terputus atau gagal konek.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🛰️</div>
+                <h3>Hisab Astronomis Mandiri & GPS 1-Klik</h3>
+                <p>Bukan tabel statis tahunan. Jadwal sholat (Imsak s/d Isya) dihitung astronomis harian oleh chip. Ambil titik koordinat masjid langsung dari satelit HP sekali klik.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⏱️</div>
+                <h3>Alur Ibadah Cerdas (Adzan & Auto Blanking)</h3>
+                <p>Otomatis bertransisi: tanda adzan berbunyi &rarr; hitung mundur iqomah per-waktu sholat &rarr; <strong>layar mati (blank) saat sholat</strong> agar jamaah tidak silau dan khusyuk.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔊</div>
+                <h3>Audio Murottal & Alarm Tiap Jam (DFPlayer)</h3>
+                <p>Murottal pra-adzan (tarkhim), murottal spesial Malam Jumat (Yasin/Al-Kahfi), 7 slot jadwal tartil harian bebas setel, serta suara penanda jam tepat bahasa Indonesia.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📊</div>
+                <h3>Laporan Kas Masjid (Animasi Roll-Up)</h3>
+                <p>Transparansi DKM makin elegan. Tampilkan Saldo Awal, Penerimaan, Pengeluaran, Saldo Akhir, dan Infak Jumat pekan 1-4 dengan animasi teks bergulir halus.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">👥</div>
+                <h3>Petugas Sholat & Pasaran Jawa</h3>
+                <p>Jadwal Khatib, Imam, Bilal Jumat sinkron otomatis dengan 5 siklus pasaran Jawa (Legi, Pahing, Pon, Wage, Kliwon). Termasuk jadwal petugas Sholat Ied & Tarawih.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🌙</div>
+                <h3>Auto Puasa Sunnah & Hitung Mundur Ramadhan</h3>
+                <p>Otomatis ingatkan puasa Senin-Kamis, Ayyamul Bidh, Asyura & Arafah (H-1 & Hari H). Aman dari hari tasyrik, plus ticker hitung mundur menuju 1 Ramadhan.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">💡</div>
+                <h3>Auto Dimming (Kecerahan Siang & Malam)</h3>
+                <p>Layar terang maksimal di siang hari (06.00-18.00) dan otomatis meredup lembut di malam hari (18.00-06.00). Hemat daya dan nyaman di mata jamaah.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h3>Universal Scan Rate (1/4s, 1/8s, 1/16s, 1/32s)</h3>
+                <p>Kompatibel dengan semua jenis scan panel matrix (1/4s, 1/8s, 1/16s, 1/32s HUB75 / DMD3). Tampilan teks dan animasi presisi, tidak berbayang, dan anti-flicker.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔄</div>
+                <h3>Update Firmware Nirkabel (OTA Web Flashing)</h3>
+                <p>Bebas ribet tanpa bongkar bingkai masjid. Pembaruan firmware cukup upload file <code>.bin</code> lewat web browser laptop atau HP di jaringan lokal.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="lisensi" class="license-section">
+        <div class="license-content">
+            <h2>Dapatkan Firmware & Lisensi Resmi via Bot Telegram</h2>
+            <p>Nggak perlu nunggu berjam-jam. Mulai dari file firmware <code>.bin</code> terbaru hingga aktivasi lisensi resmi board JWS kamu, semuanya diurus otomatis 24/7 langsung lewat Bot Telegram.</p>
+            
+            <ul class="license-steps">
+                <li><span class="step-num">1</span> Buka dan kirim pesan ke Bot Telegram <strong>@LicjwsAlmahdi_bot</strong>.</li>
+                <li><span class="step-num">2</span> Dapatkan file firmware <code>.bin</code> sesuai varian chip & panel lo.</li>
+                <li><span class="step-num">3</span> Masukkan ID Board (Hardware ID) lo untuk generate lisensi resmi seketika!</li>
+            </ul>
+            
+            <a href="https://t.me/LicjwsAlmahdi_bot" target="_blank" class="btn-primary pulse">👉 Dapatkan Lisensi & Firmware (@LicjwsAlmahdi_bot)</a>
+        </div>
+    </section>
+
+    <footer id="kontak">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>JAM SHOLAT DIGITAL ALMAHDI</h3>
+                <p>Solusi cerdas display masjid & musholla modern.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://t.me/LicjwsAlmahdi_bot" target="_blank">Kontak Developer: Mahdi Kharifans (@LicjwsAlmahdi_bot)</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

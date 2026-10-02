@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Flashing Firmware & Bootloader ESP32 - JAM SHOLAT DIGITAL ALMAHDI</title>
+    <meta name="description" content="Tutorial lengkap cara flashing firmware, bootloader, partisi, dan boot_app0 pada ESP32, ESP32-S2 (HD-WF1), dan ESP32-S3 untuk Jam Sholat Digital Almahdi.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        .flash-section {
+            padding: 5rem 5%;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+        .flash-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        .flash-card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.035);
+        }
+        .flash-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 1.2rem;
+        }
+        .flash-badge {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 800;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .flash-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+        .flash-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .flash-table th, .flash-table td {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            text-align: left;
+        }
+        .flash-table th {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        .flash-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.015);
+        }
+        .flash-table td code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #fbbf24;
+            font-family: monospace;
+            font-weight: 700;
+        }
+        .code-command {
+            background: #0b1120;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            color: #38bdf8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .notice-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            color: #fde68a;
+            font-size: 0.95rem;
+        }
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            color: #a7f3d0;
+            font-size: 0.95rem;
+        }
+        .step-list {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">JAM SHOLAT ALMAHDI</div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="panduan.html">Panduan APK</a>
+            <a href="perakitan.html">Perakitan</a>
+            <a href="flashing.html">Flashing ESP32</a>
+            <a href="index.html#varian">Varian</a>
+            <a href="index.html#lisensi">Lisensi</a>
+            <a href="https://t.me/LicjwsAlmahdi_bot" class="btn-primary-small" target="_blank">Hubungi Bot</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="min-height: 55vh; align-items: flex-end; padding-bottom: 3.5rem;">
+        <div class="hero-content" style="max-width: 850px; margin: 0 auto; text-align: center;">
+            <h1>Panduan Flashing<br><span class="highlight">Bootloader & Firmware ESP32.</span></h1>
+            <p>Panduan langkah demi langkah mengisi Bootloader, Tabel Partisi, Boot App, dan Firmware utama Jam Sholat Digital Almahdi pada varian ESP32 DevKit, ESP32-S2 (HD-WF1), dan ESP32-S3.</p>
+        </div>
+    </header>
+
+    <section class="flash-section">
+
+        <!-- 1. PERSIAPAN FILE & SOFTWARE -->
+        <div class="flash-card">
+            <div class="flash-header">
+                <div class="flash-badge">1</div>
+                <div>
+                    <h3>Persiapan Tool Flasher & File Binary</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Software dan 4 file esensial yang wajib disiapkan sebelum flashing chip baru/kosong.</p>
+                </div>
+            </div>
+
+            <p style="color:var(--text-muted);">
+                Untuk board ESP32 yang masih baru (pabrikan kosong), wajib di-flash <strong>4 komponen file binary</strong> agar sistem operasi ESP-IDF dapat booting dan menjalankan program jam sholat:
+            </p>
+
+            <ul class="step-list">
+                <li><strong>1. Bootloader (<code>bootloader.bin</code>):</strong> Bertugas menginisialisasi clock, flash SPI, dan memanggil partisi boot.</li>
+                <li><strong>2. Partition Table (<code>partitions.bin</code>):</strong> Peta partisi memori flash internal (alokasi memori program & storage EEPROM/LittleFS).</li>
+                <li><strong>3. Boot App Sub-system (<code>boot_app0.bin</code>):</strong> Penentu slot partisi aktif untuk mendukung update nirkabel OTA.</li>
+                <li><strong>4. Firmware Utama (<code>jamsholat_xxx.bin</code>):</strong> Program inti Jam Sholat Digital Almahdi yang didapatkan langsung dari Bot Telegram <strong><a href="https://t.me/LicjwsAlmahdi_bot" target="_blank" style="color:var(--primary);">@LicjwsAlmahdi_bot</a></strong>.</li>
+            </ul>
+
+            <div class="notice-box">
+                <strong>Software Flasher yang Direkomendasikan:</strong><br>
+                • <strong>Espressif Flash Download Tools (Resmi GUI):</strong> Paling mudah digunakan, tinggal masukkan file dan alamat memori lalu klik START.<br>
+                • <strong>esptool.py (CLI Python):</strong> Cocok untuk teknisi yang terbiasa menggunakan Command Prompt / Terminal.
+            </div>
+        </div>
+
+        <!-- 2. PETA ALAMAT MEMORI FLASH (OFFSET ADDRESS) -->
+        <div class="flash-card">
+            <div class="flash-header">
+                <div class="flash-badge">2</div>
+                <div>
+                    <h3>Peta Alamat Memori (Flash Offset Map)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Alamat heksadesimal wajib pada memori flash agar chip tidak bootloop.</p>
+                </div>
+            </div>
+
+            <h4 style="color:#fbbf24; margin-top:1rem;">A. Varian ESP32-S2 (Huidu HD-WF1 & Wemos S2)</h4>
+            <table class="flash-table">
+                <thead>
+                    <tr>
+                        <th>Nama File</th>
+                        <th>Alamat Heksadesimal (Offset)</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>bootloader.bin</code></td>
+                        <td><code>0x1000</code></td>
+                        <td>Bootloader resmi ESP32-S2</td>
+                    </tr>
+                    <tr>
+                        <td><code>partitions.bin</code></td>
+                        <td><code>0x8000</code></td>
+                        <td>Tabel partisi (Default / Minimal SPIFFS)</td>
+                    </tr>
+                    <tr>
+                        <td><code>boot_app0.bin</code></td>
+                        <td><code>0xe000</code></td>
+                        <td>Data inisialisasi boot OTA</td>
+                    </tr>
+                    <tr>
+                        <td><code>jamsholatp10s2.ino.bin</code></td>
+                        <td><code>0x10000</code></td>
+                        <td>Firmware Jam Sholat P10 HD-WF1 Almahdi</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                <em>Konfigurasi SPI ESP32-S2:</em> SPI SPEED: <strong>80MHz</strong> | SPI MODE: <strong>DIO</strong> | FLASH SIZE: <strong>32Mbit / 4MB</strong>.
+            </p>
+
+            <h4 style="color:#fbbf24; margin-top:2rem;">B. Varian ESP32 DevKit (P5 RGB / P2.5 / P10 RGB)</h4>
+            <table class="flash-table">
+                <thead>
+                    <tr>
+                        <th>Nama File</th>
+                        <th>Alamat Heksadesimal (Offset)</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>bootloader.bin</code></td>
+                        <td><code>0x1000</code></td>
+                        <td>Bootloader dual-core ESP32</td>
+                    </tr>
+                    <tr>
+                        <td><code>partitions.bin</code></td>
+                        <td><code>0x8000</code></td>
+                        <td>Tabel partisi OTA</td>
+                    </tr>
+                    <tr>
+                        <td><code>boot_app0.bin</code></td>
+                        <td><code>0xe000</code></td>
+                        <td>Data inisialisasi boot OTA</td>
+                    </tr>
+                    <tr>
+                        <td><code>firmware_esp32_rgb.bin</code></td>
+                        <td><code>0x10000</code></td>
+                        <td>Firmware Jam Sholat RGB Almahdi</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                <em>Konfigurasi SPI ESP32 DevKit:</em> SPI SPEED: <strong>40MHz / 80MHz</strong> | SPI MODE: <strong>DIO</strong> | FLASH SIZE: <strong>32Mbit / 4MB</strong>.
+            </p>
+
+            <h4 style="color:#fbbf24; margin-top:2rem;">C. Varian ESP32-S3 (HD-WF2 / DevKit S3)</h4>
+            <table class="flash-table">
+                <thead>
+                    <tr>
+                        <th>Nama File</th>
+                        <th>Alamat Heksadesimal (Offset)</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>bootloader.bin</code></td>
+                        <td><code>0x0000</code></td>
+                        <td><em>Catatan:</em> ESP32-S3 bootloader dimulai dari alamat 0x0</td>
+                    </tr>
+                    <tr>
+                        <td><code>partitions.bin</code></td>
+                        <td><code>0x8000</code></td>
+                        <td>Tabel partisi 8MB / 16MB</td>
+                    </tr>
+                    <tr>
+                        <td><code>boot_app0.bin</code></td>
+                        <td><code>0xe000</code></td>
+                        <td>Data inisialisasi boot OTA</td>
+                    </tr>
+                    <tr>
+                        <td><code>firmware_s3_rgb.bin</code></td>
+                        <td><code>0x10000</code></td>
+                        <td>Firmware Jam Sholat S3 DMA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. CARA FLASHING DENGAN ESPRESSIF FLASH DOWNLOAD TOOL -->
+        <div class="flash-card">
+            <div class="flash-header">
+                <div class="flash-badge">3</div>
+                <div>
+                    <h3>Langkah Flashing via GUI (Flash Download Tool)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Metode termudah menggunakan software resmi Espressif.</p>
+                </div>
+            </div>
+
+            <ol class="step-list">
+                <li>Buka software <strong>flash_download_tool_xxx.exe</strong>.</li>
+                <li>Pada jendela pop-up awal, pilih:
+                    <ul>
+                        <li><strong>ChipType:</strong> Pilih tipe chip lo (<code>ESP32-S2</code>, <code>ESP32</code>, atau <code>ESP32-S3</code>).</li>
+                        <li><strong>WorkMode:</strong> Pilih <code>develop</code>.</li>
+                        <li><strong>LoadMode:</strong> Pilih <code>uart</code>. Klik OK.</li>
+                    </ul>
+                </li>
+                <li>Di tab <strong>SPIDownload</strong>, masukkan ke-4 baris file binary dan isi alamat heksadesimalnya (centang kotak checklist di sebelah kiri masing-masing file).</li>
+                <li>Atur parameter radio button di bawahnya:
+                    <ul>
+                        <li><strong>SPI SPEED:</strong> <code>80MHz</code> (atau <code>40MHz</code> jika kabel panjang).</li>
+                        <li><strong>SPI MODE:</strong> <code>DIO</code>.</li>
+                        <li><strong>FLASH SIZE:</strong> <code>32Mbit</code> (4MB) untuk S2/DevKit, atau <code>64Mbit/128Mbit</code> untuk S3.</li>
+                    </ul>
+                </li>
+                <li>Pilih <strong>COM Port</strong> USB modul lo dan set <strong>BAUD: 921600</strong> (untuk kecepatan maksimal) atau <strong>115200</strong>.</li>
+                <li><strong>Masuk Mode Download:</strong> Tekan dan tahan tombol <strong>BOOT (IO0)</strong> pada board, lalu colok kabel USB (atau tekan tombol RESET sekali sambil tombol BOOT tetap ditahan), kemudian lepas tombol BOOT.</li>
+                <li>Klik tombol <strong>START</strong>. Kotak status akan berubah menampilkan progres bar hijau <strong>DOWNLOADING</strong>.</li>
+                <li>Tunggu hingga muncul tulisan <strong>FINISH</strong> berwarna hijau.</li>
+                <li>Tekan tombol <strong>RESET (EN)</strong> pada board, atau cabut dan colok kembali kabel power USB. Modul langsung aktif dan memancarkan Wi-Fi JWS!</li>
+            </ol>
+
+            <div class="success-box">
+                <strong>Tips Sukses:</strong> Setelah flashing pertama kali selesai, untuk update firmware berikutnya lo <strong>nggak perlu colok kabel USB lagi</strong>! Cukup gunakan fitur <strong>Update Firmware Nirkabel (OTA)</strong> lewat browser di IP <code>11.11.11.11/update</code>.
+            </div>
+        </div>
+
+        <!-- 4. FLASHING VIA COMMAND LINE (ESPTOOL.PY) -->
+        <div class="flash-card">
+            <div class="flash-header">
+                <div class="flash-badge">4</div>
+                <div>
+                    <h3>Flashing via Command Line (esptool.py)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Perintah langsung 1-baris tanpa install software GUI tambahan.</p>
+                </div>
+            </div>
+
+            <p style="color:var(--text-muted);">
+                Jika lo memiliki Python / esptool di komputer, jalankan satu baris perintah sakti berikut (sesuaikan nama port <code>COM3</code> dengan port USB lo):
+            </p>
+
+            <p style="color:#fbbf24; font-weight:600; margin-top:1rem;">Perintah Flash untuk ESP32-S2 (Huidu HD-WF1):</p>
+            <div class="code-command">esptool.py --chip esp32s2 --port COM3 --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 jamsholatp10s2.ino.bin</div>
+
+            <p style="color:#fbbf24; font-weight:600; margin-top:1.5rem;">Perintah Flash untuk ESP32 DevKit (P5 / P2.5 RGB):</p>
+            <div class="code-command">esptool.py --chip esp32 --port COM3 --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 jamsholat_rgb.bin</div>
+        </div>
+
+        <!-- 5. SOLUSI MASALAH FLASHING (FAQ TROUBLESHOOTING) -->
+        <div class="flash-card">
+            <div class="flash-header">
+                <div class="flash-badge">⚠️</div>
+                <div>
+                    <h3>Troubleshooting: Solusi Kendala Saat Flashing</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Solusi cepat jika proses flashing macet atau tidak terhubung.</p>
+                </div>
+            </div>
+
+            <ul class="step-list">
+                <li><strong>Error: "Failed to connect to ESP32: No serial data received"</strong><br>
+                    Board belum masuk mode download. Tahan tombol <strong>BOOT</strong>, tekan tombol <strong>RESET</strong> satu kali, lalu lepas tombol BOOT sebelum klik START.
+                </li>
+                <li><strong>Port COM tidak terdeteksi di Device Manager:</strong><br>
+                    Pastikan driver USB sudah terinstall:
+                    <ul>
+                        <li>Driver <strong>CP210x</strong> (untuk board dengan chip kotak Silicon Labs).</li>
+                        <li>Driver <strong>CH340 / CH341</strong> (untuk board clone murah).</li>
+                        <li>Driver <strong>ESP32-S2 / S3 USB JTAG / CDC</strong> jika menggunakan port USB native.</li>
+                    </ul>
+                </li>
+                <li><strong>Setelah diflash layar display tetap gelap / tidak muncul sinyal Wi-Fi:</strong><br>
+                    Pastikan file <code>boot_app0.bin</code> di alamat <code>0xe000</code> tidak lupa dimasukkan. Tanpa file ini, bootloader tidak tahu partisi aplikasi mana yang harus dijalankan.
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-content" style="max-width: 1050px; margin: 0 auto;">
+            <div class="footer-brand">
+                <h3>JAM SHOLAT DIGITAL ALMAHDI</h3>
+                <p>Panduan Flashing Firmware & Bootloader Resmi.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://t.me/LicjwsAlmahdi_bot" target="_blank">Dapatkan File Firmware di Bot: @LicjwsAlmahdi_bot</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

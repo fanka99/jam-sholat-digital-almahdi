@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Penggunaan - JAM SHOLAT DIGITAL ALMAHDI</title>
+    <meta name="description" content="Tutorial lengkap cara menggunakan kontroler dan aplikasi JAM SHOLAT DIGITAL ALMAHDI (JamSholatRemote.apk).">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        .tutorial-section {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .step-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 1rem;
+        }
+        .step-number {
+            background: var(--primary);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .step-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+        .step-content p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .step-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+        .step-content li {
+            margin-bottom: 0.5rem;
+        }
+        .code-box {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            color: var(--accent);
+            margin: 1rem 0;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">JAM SHOLAT ALMAHDI</div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="panduan.html">Panduan APK</a>
+            <a href="perakitan.html">Perakitan</a>
+            <a href="flashing.html">Flashing ESP32</a>
+            <a href="index.html#lisensi">Lisensi</a>
+            <a href="https://t.me/LicjwsAlmahdi_bot" class="btn-primary-small" target="_blank">Hubungi Bot</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="min-height: 60vh; align-items: flex-end; padding-bottom: 4rem;">
+        <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h1>Panduan Penggunaan APK.<br><span class="highlight">JAM SHOLAT DIGITAL ALMAHDI.</span></h1>
+            <p>Mulai dari konek Wi-Fi mandiri sampai konfigurasi jadwal, audio murottal, dan laporan keuangan masjid, semua dipandu lengkap di sini.</p>
+        </div>
+    </header>
+
+    <section class="tutorial-section">
+        
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h3>Koneksi WiFi & Aplikasi (Tanpa Kuota)</h3>
+            </div>
+            <div class="step-content">
+                <p>Modul JWS ini mancarin sinyal Wi-Fi sendiri (SoftAP). Lo nggak butuh router internet tambahan. Mantapnya lagi, aplikasi kita punya fitur <strong>Bypass Data Seluler</strong> (Android 10-15), jadi lo nggak perlu repot matiin paket data saat mau nyetting JWS!</p>
+                <div class="code-box">
+                    SSID Default: JWS-XXXXXX<br>
+                    Password: 12345678<br>
+                    IP Address: 11.11.11.11 (Port 313)
+                </div>
+                <ul>
+                    <li>Install aplikasi <strong>JAM SHOLAT DIGITAL ALMAHDI (JamSholatRemote.apk)</strong> di HP Android lo.</li>
+                    <li>Nyalakan JWS, cari sinyal Wi-Fi JWS di HP, masukkan password <code>12345678</code>.</li>
+                    <li>Buka aplikasi. Status di atas aplikasi akan berubah jadi <span style="color:var(--accent);">"Terhubung ke Kontroler"</span>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h3>Sinkronisasi Jam & Lokasi (GPS)</h3>
+            </div>
+            <div class="step-content">
+                <p>Akurasi waktu dan lokasi itu wajib hukumnya buat JWS.</p>
+                <ul>
+                    <li><strong>Sinkron Waktu:</strong> Cukup tekan tombol "Sinkronkan Waktu HP" di aplikasi. Jam, tanggal, dan tahun di JWS akan otomatis sama persis dengan HP lo.</li>
+                    <li><strong>Koordinat GPS:</strong> Tekan "Ambil Lokasi GPS" biar koordinat Lintang & Bujur masjid akurat. Waktu sholat otomatis dihitung pakai rumus astronomi berdasarkan lokasi ini.</li>
+                    <li><strong>Koreksi Tanggal & Jadwal:</strong> Kalau misal hilal beda 1 hari, tinggal setel "Koreksi Hijriah". Jadwal per-waktu (Shubuh, Dzuhur, dll) juga bisa lo tambah/kurangi menitnya (Ihtiyati).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h3>Adzan, Iqomah & Mode Sholat (Layar Mati)</h3>
+            </div>
+            <div class="step-content">
+                <p>Biar jamaah bisa fokus ibadah dan nggak silau, sistem JWS ini udah pinter ngatur transisi otomatis:</p>
+                <ul>
+                    <li><strong>Fase Adzan:</strong> Alarm buzzer bunyi, layar kedip nampilin "ADZAN MAGHRIB", dan audio MP3 otomatis nyala.</li>
+                    <li><strong>Fase Iqomah:</strong> Layar nampilin hitung mundur detik iqomah (durasi iqomah tiap waktu sholat bisa lo bedain, misal Shubuh 12 menit, Maghrib 7 menit).</li>
+                    <li><strong>Mode Sholat (Blanking):</strong> Begitu waktu iqomah habis, layar akan <strong>mati (blank) otomatis</strong>. Lo bisa atur berapa lama layar mati (misal 15 menit). Habis itu nyala normal lagi!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <h3>Audio Murottal & MP3 (DFPlayer)</h3>
+            </div>
+            <div class="step-content">
+                <p>Tinggal colok modul ke ampli masjid. Fitur audionok-nya super lengkap:</p>
+                <ul>
+                    <li><strong>Tarkhim Pra-Adzan:</strong> Mutar ayat suci otomatis beberapa menit sebelum masuk waktu sholat. Plus ada murottal spesial Malam Jumat (Yasin/Al-Kahfi).</li>
+                    <li><strong>Jadwal Tartil (7 Slot):</strong> Lo bisa setel mp3 kajian/tartil buat mutar otomatis di jam & menit tertentu secara spesifik (misal tiap habis ashar).</li>
+                    <li><strong>Hourly Alarm:</strong> Bunyi penanda waktu ("Pukul dua belas tepat") tiap jam layaknya jam klasik elit.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <h3>Laporan Kas Masjid & Petugas Sholat</h3>
+            </div>
+            <div class="step-content">
+                <p>Lupakan papan tulis spidol! Sekarang pengurus masjid bisa pamer transparansi langsung di layar LED.</p>
+                <ul>
+                    <li><strong>Keuangan:</strong> Input Kas Awal, Pemasukan, Pengeluaran, Saldo Akhir, sampai Infak Jumat mingguan. Nanti tampilannya animasi Roll-Up elegan di layar.</li>
+                    <li><strong>Petugas Sholat:</strong> Lo bisa masukin nama Khatib, Imam, Bilal Jumat (sistem sinkron otomatis sama pasaran kalender Jawa kayak Legi/Kliwon lho!). Termasuk petugas Idul Fitri, Adha, dan Tarawih.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">6</div>
+                <h3>Pengingat Puasa Sunnah & Teks Berjalan</h3>
+            </div>
+            <div class="step-content">
+                <p>Bukan cuma jam biasa, tapi asisten ibadah.</p>
+                <ul>
+                    <li><strong>Auto Puasa Sunnah:</strong> H-1 dan Hari H, JWS otomatis nampilin ajakan puasa (Senin-Kamis, Ayyamul Bidh, Asyura, Arafah). Sistem juga pintar ngeblok pesan puasa di hari Tasyrik!</li>
+                    <li><strong>Hitung Mundur Ramadhan:</strong> Ticker otomatis "Menuju Bulan Suci Ramadhan: X Hari Lagi".</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">7</div>
+                <h3>Update Firmware Nirkabel (OTA)</h3>
+            </div>
+            <div class="step-content">
+                <p>Nggak perlu bongkar casing atau cabut modul kalau ada update sistem baru.</p>
+                <ol>
+                    <li>Dapatkan file firmware <code>.bin</code> varian terbaru kamu langsung melalui Bot Telegram <strong><a href="https://t.me/LicjwsAlmahdi_bot" target="_blank" style="color:var(--primary);">@LicjwsAlmahdi_bot</a></strong>.</li>
+                    <li>Sambungkan HP/PC ke Wi-Fi Jam Sholat (SSID: <code>JWS-XXXXXX</code>).</li>
+                    <li>Buka browser (Chrome / Edge), masuk ke <code>http://11.11.11.11/update</code></li>
+                    <li>Pilih file firmware <code>.bin</code> yang sudah didownload dari bot, lalu klik <strong>Update</strong>. JWS kamu langsung terupgrade dengan fitur terbaru dalam hitungan detik!</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">8</div>
+                <h3>Kompatibilitas Panel & Scan Rate (1/4s s/d 1/32s)</h3>
+            </div>
+            <div class="step-content">
+                <p>Nggak perlu khawatir salah pilih panel LED matrix di pasaran. Firmware Jam Sholat Almahdi sudah mendukung algoritma scan lengkap:</p>
+                <ul>
+                    <li><strong>Scan 1/4S:</strong> P10 Monokrom (1 baris / multi-panel) & P10 RGB outdoor tertentu.</li>
+                    <li><strong>Scan 1/8S:</strong> P10 RGB Full Color (outdoor & semi-outdoor) dan P10 Mono standar.</li>
+                    <li><strong>Scan 1/16S:</strong> P5 RGB Full Color (64x32 HUB75 DMA).</li>
+                    <li><strong>Scan 1/32S:</strong> P2.5 RGB Full Color resolusi tinggi (64x64 / 128x64).</li>
+                </ul>
+                <p>Semua varian dipastikan tampil presisi, anti-flicker, dan bebas garis bayangan!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content" style="max-width: 1000px; margin: 0 auto;">
+            <div class="footer-brand">
+                <h3>JAM SHOLAT DIGITAL ALMAHDI</h3>
+                <p>Panduan Penggunaan Cepat & Akurat.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://t.me/LicjwsAlmahdi_bot" target="_blank">Kontak Developer: Mahdi Kharifans (@LicjwsAlmahdi_bot)</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
