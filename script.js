@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    // Animasi pada feature cards
-    const cards = document.querySelectorAll('.feature-card');
-    cards.forEach((card, index) => {
+    // Animasi pada cards
+    const cards = document.querySelectorAll('.feature-card, .step-card, .wiring-card, .flash-card');
+    cards.forEach((card) => {
         card.style.opacity = 0;
         card.style.transform = 'translateY(20px)';
-        card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(card);
     });
     

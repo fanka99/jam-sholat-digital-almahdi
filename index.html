@@ -4,43 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAM SHOLAT DIGITAL ALMAHDI - Smart Controller & Remote</title>
-    <meta name="description" content="Sistem Jam Sholat Digital Almahdi dengan dukungan multi-panel dan multi-chip (ESP8266, ESP32, ESP32-S2, ESP32-S3).">
+    <meta name="description" content="Sistem Jam Sholat Digital Almahdi terpadu: panduan penggunaan APK, skema perakitan hardware P10/P5 RGB/LCD, dan tutorial flashing bootloader ESP32 dalam satu halaman.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
-        <div class="logo">JAM SHOLAT ALMAHDI</div>
+        <div class="logo"><a href="#beranda" style="color:inherit; text-decoration:none;">JAM SHOLAT ALMAHDI</a></div>
         <div class="nav-links">
-            <a href="index.html">Beranda</a>
-            <a href="panduan.html">Panduan APK</a>
-            <a href="perakitan.html">Perakitan</a>
-            <a href="flashing.html">Flashing ESP32</a>
+            <a href="#beranda">Beranda</a>
             <a href="#varian">Varian</a>
             <a href="#fitur">Fitur</a>
+            <a href="#panduan">Panduan APK</a>
+            <a href="#perakitan">Perakitan</a>
+            <a href="#flashing">Flashing</a>
             <a href="#lisensi">Lisensi</a>
             <a href="https://t.me/LicjwsAlmahdi_bot" class="btn-primary-small" target="_blank">Hubungi Bot</a>
         </div>
     </nav>
 
-    <header class="hero">
+    <!-- SECTION 1: HERO BERANDA -->
+    <header id="beranda" class="hero">
         <div class="hero-content">
             <h1>Jam Sholat Digital.<br><span class="highlight">AL-MAHDI Smart System.</span></h1>
             <p>Solusi cerdas pengontrol Jam Sholat Digital (JWS) Almahdi. Dari ESP8266 ekonomis hingga ESP32-S3 Devkit ultra powerful. Nyala stabil 24/7 dengan dukungan penuh panel P10, P5, P2.5 RGB hingga LCD.</p>
             <div class="cta-group">
-                <a href="#lisensi" class="btn-primary">Cara Dapat Lisensi</a>
-                <a href="#varian" class="btn-secondary">Lihat Varian</a>
+                <a href="#lisensi" class="btn-primary">Dapatkan Lisensi & Firmware</a>
+                <a href="#panduan" class="btn-secondary">Pelajari Panduan</a>
             </div>
         </div>
         <div class="hero-visual">
             <div class="glass-card chip-card">
                 <div class="chip-icon">⚡</div>
                 <h3>Multi-Board Inside</h3>
-                <p>Support ESP8266, ESP32 Devkit, ESP32-S2, dan ESP32-S3. Koneksi WiFi native, setup super gampang.</p>
+                <p>Support ESP8266, ESP32 Devkit, ESP32-S2 (HD-WF1), dan ESP32-S3. Koneksi Wi-Fi native mandiri, setup super gampang.</p>
             </div>
         </div>
     </header>
 
+    <!-- SECTION 2: VARIAN PANEL & SCAN RATE -->
     <section id="varian" class="features" style="background: rgba(255,255,255,0.015); border-bottom: 1px solid var(--border-color); border-top: 1px solid var(--border-color);">
         <div class="section-header">
             <h2>Varian Super Lengkap</h2>
@@ -50,7 +52,7 @@
             <div class="feature-card">
                 <div class="icon">🟥</div>
                 <h3>P10 Mono (Single Color)</h3>
-                <p><strong>Scan Type:</strong> 1/4S & 1/8S<br><strong>Board:</strong> ESP8266 & ESP32-S2<br>Solusi paling ekonomis buat masjid. Cocok buat running text dan jadwal 1x8 atau ukuran memanjang lainnya.</p>
+                <p><strong>Scan Type:</strong> 1/4S & 1/8S<br><strong>Board:</strong> ESP8266 & ESP32-S2 (HD-WF1)<br>Solusi paling ekonomis buat masjid. Cocok buat running text dan jadwal 1x8 atau ukuran memanjang lainnya.</p>
             </div>
             <div class="feature-card">
                 <div class="icon">🌈</div>
@@ -65,11 +67,12 @@
             <div class="feature-card">
                 <div class="icon">📺</div>
                 <h3>LCD (16x2 & 20x4)</h3>
-                <p><strong>Interface:</strong> I2C Backpack (PCF8574)<br><strong>Board:</strong> ESP8266 Controller<br>Klasik, hemat daya (<2W), dan compact. Pas banget buat JWS rumahan, meja mihrab, atau mushola kecil.</p>
+                <p><strong>Interface:</strong> I2C Backpack (PCF8574)<br><strong>Board:</strong> ESP8266 Controller<br>Klasik, hemat daya (< 2 Watt), dan compact. Pas banget buat JWS rumahan, meja mihrab, atau mushola kecil.</p>
             </div>
         </div>
     </section>
 
+    <!-- SECTION 3: 10 FITUR UNGGULAN FLAGSHIP -->
     <section id="fitur" class="features">
         <div class="section-header">
             <h2>10 Fitur Unggulan Flagship</h2>
@@ -129,6 +132,360 @@
         </div>
     </section>
 
+    <!-- SECTION 4: PANDUAN PENGGUNAAN APK -->
+    <section id="panduan" class="content-section" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <h2>Panduan Penggunaan APK</h2>
+            <p>Cara setting modul jam sholat dan menggunakan aplikasi Android JAM SHOLAT DIGITAL ALMAHDI.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h3>Koneksi Wi-Fi & Aplikasi (Tanpa Kuota Internet)</h3>
+            </div>
+            <div class="step-content">
+                <p>Modul JWS memancarkan sinyal Wi-Fi sendiri (SoftAP mandiri). Lo tidak membutuhkan router internet tambahan. Berkat fitur <strong>Bypass Data Seluler</strong> (Android 10 - 15), lo nggak perlu mematikan paket data seluler saat membuka aplikasi!</p>
+                <div class="code-box">
+                    SSID Default: JWS-XXXXXX<br>
+                    Password: 12345678<br>
+                    IP Address: 11.11.11.11 (Port Komunikasi: 313)
+                </div>
+                <ul>
+                    <li>Install aplikasi <strong>JAM SHOLAT DIGITAL ALMAHDI (JamSholatRemote.apk)</strong> di HP Android lo.</li>
+                    <li>Nyalakan JWS, cari nama Wi-Fi jam sholat di menu Wi-Fi HP, masukkan password <code>12345678</code>.</li>
+                    <li>Buka aplikasi. Status di bilah atas aplikasi akan langsung berubah jadi <span style="color:var(--accent); font-weight:600;">"Terhubung ke Kontroler"</span>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h3>Sinkronisasi Jam & Lokasi Geografis (GPS)</h3>
+            </div>
+            <div class="step-content">
+                <p>Akurasi waktu dan koordinat lokasi adalah kunci utama presisi jadwal sholat:</p>
+                <ul>
+                    <li><strong>Tombol Sinkronkan Waktu HP:</strong> Cukup tekan tombol ini satu kali, jam, tanggal, bulan, dan tahun pada unit JWS akan otomatis sama persis dengan waktu internet di HP lo.</li>
+                    <li><strong>Tombol Ambil Lokasi GPS:</strong> Mengunci titik koordinat Lintang (Latitude) dan Bujur (Longitude) masjid langsung dari satelit GPS smartphone. Jadwal sholat otomatis dihitung astronomis secara akurat.</li>
+                    <li><strong>Koreksi Hijriah & Ihtiyati:</strong> Sesuaikan jika rukyatul hilal berbeda 1-2 hari. Tiap waktu sholat juga bisa dikoreksi secara manual (-9 s/d +9 menit).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h3>Adzan, Hitung Mundur Iqomah & Mode Sholat (Blanking)</h3>
+            </div>
+            <div class="step-content">
+                <p>Sistem mengatur transisi ibadah secara otomatis agar jamaah tertib dan khusyuk:</p>
+                <ul>
+                    <li><strong>Fase Adzan:</strong> Alarm buzzer berbunyi, nama waktu sholat berkedip di layar (misal: "ADZAN MAGHRIB"), dan audio MP3 adzan otomatis bersuara.</li>
+                    <li><strong>Fase Iqomah:</strong> Layar menampilkan hitungan mundur menit dan detik (durasi iqomah tiap waktu sholat bisa disetel berbeda, misal Subuh 12 menit, Maghrib 7 menit).</li>
+                    <li><strong>Mode Sholat (Auto Blanking):</strong> Saat hitung mundur habis, layar <strong>otomatis mati total (blank)</strong> selama sholat berlangsung agar tidak menyilaukan jamaah. Setelah durasi sholat selesai (misal 15 menit), layar otomatis menyala normal kembali.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <h3>Audio Murottal, Tarkhim & Alarm Tiap Jam</h3>
+            </div>
+            <div class="step-content">
+                <p>Fitur audio terintegrasi langsung ke modul pemutar MP3 DFPlayer Mini:</p>
+                <ul>
+                    <li><strong>Tarkhim Pra-Adzan:</strong> Otomatis memutar ayat suci Al-Qur'an beberapa menit sebelum waktu sholat tiba.</li>
+                    <li><strong>Murottal Malam Jumat:</strong> Otomatis memutar Surah Yasin atau Al-Kahfi menjelang Maghrib & Isya di hari Kamis sore.</li>
+                    <li><strong>Jadwal Tartil 7 Slot:</strong> Bebas menentukan 7 jadwal pemutaran surat tertentu pada jam dan hari yang diinginkan.</li>
+                    <li><strong>Hourly Voice Alarm:</strong> Suara penanda jam berbahasa Indonesia ("Pukul dua belas tepat") tiap pergantian jam.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <h3>Laporan Kas Masjid & Petugas Sholat</h3>
+            </div>
+            <div class="step-content">
+                <p>Pengumuman DKM masjid tampil elegan menggantikan papan tulis kapur/spidol:</p>
+                <ul>
+                    <li><strong>Laporan Keuangan (Animasi Roll-Up):</strong> Input Kas Awal, Penerimaan, Pengeluaran, Saldo Akhir, dan Infak Jumat pekan 1 s/d 4 langsung dari aplikasi HP. Tampil teks bergulir dari bawah ke atas.</li>
+                    <li><strong>Petugas Sholat & Pasaran Jawa:</strong> Nama Khatib, Imam, Bilal Jumat otomatis terdeteksi mengikuti 5 pasaran Jawa (Legi, Pahing, Pon, Wage, Kliwon). Termasuk jadwal petugas Sholat Ied & Tarawih Ramadhan.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">6</div>
+                <h3>Auto Pengingat Puasa Sunnah & Teks Berjalan</h3>
+            </div>
+            <div class="step-content">
+                <p>Asisten ibadah pintar untuk seluruh jamaah masjid:</p>
+                <ul>
+                    <li><strong>Auto Puasa Sunnah:</strong> Otomatis muncul pada H-1 dan Hari H untuk puasa Senin-Kamis, Ayyamul Bidh (13-15 Hijriah), Asyura & Arafah. Dilengkapi pengaman otomatis tidak tayang pada Hari Tasyrik!</li>
+                    <li><strong>Hitung Mundur Ramadhan:</strong> Ticker otomatis menampilkan hitungan mundur: <em>"Menuju Bulan Suci Ramadhan: X Hari Lagi"</em>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">7</div>
+                <h3>Update Firmware Nirkabel (OTA)</h3>
+            </div>
+            <div class="step-content">
+                <p>Pembaruan sistem tanpa perlu bongkar bingkai masjid:</p>
+                <ol>
+                    <li>Dapatkan file firmware <code>.bin</code> terbaru dari Bot Telegram <strong><a href="https://t.me/LicjwsAlmahdi_bot" target="_blank" style="color:var(--primary);">@LicjwsAlmahdi_bot</a></strong>.</li>
+                    <li>Sambungkan HP/PC ke Wi-Fi Jam Sholat (SSID: <code>JWS-XXXXXX</code>).</li>
+                    <li>Buka browser, akses alamat: <code>http://11.11.11.11/update</code>.</li>
+                    <li>Pilih file <code>.bin</code> dan klik Update. Modul langsung ter-upgrade otomatis dalam hitungan detik!</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: PANDUAN PERAKITAN & SKEMA WIRING -->
+    <section id="perakitan" class="content-section" style="border-top: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+        <div class="section-header">
+            <h2>Skema & Panduan Perakitan Hardware</h2>
+            <p>Panduan jalur kabel presisi untuk ESP8266, Huidu HD-WF1 (ESP32-S2), ESP32 DevKit, dan display LCD.</p>
+        </div>
+
+        <!-- SKEMA 1: ESP8266 + P10 MONO -->
+        <div class="wiring-card">
+            <div class="wiring-header">
+                <div class="wiring-badge">1</div>
+                <div>
+                    <h3>Skema Wiring: ESP8266 (NodeMCU / Wemos D1) + P10 Mono (HUB12)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Untuk modul jam sholat masjid standar 1 s/d 8 panel P10 Monokrom.</p>
+                </div>
+            </div>
+            
+            <table class="wiring-table">
+                <thead>
+                    <tr>
+                        <th>Pin Header HUB12 P10</th>
+                        <th>Pin ESP8266 (Wemos/NodeMCU)</th>
+                        <th>GPIO</th>
+                        <th>Fungsi Sinyal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>OE</strong> (Enable)</td><td><code>D8</code></td><td>GPIO 15</td><td>Kontrol kecerahan & blanking layar</td></tr>
+                    <tr><td><strong>A</strong> (Row Select A)</td><td><code>D0</code></td><td>GPIO 16</td><td>Pemilih baris 1/4S</td></tr>
+                    <tr><td><strong>B</strong> (Row Select B)</td><td><code>D6</code></td><td>GPIO 12</td><td>Pemilih baris 1/4S</td></tr>
+                    <tr><td><strong>CLK</strong> (Clock)</td><td><code>D5</code></td><td>GPIO 14</td><td>Sinyal SPI Clock</td></tr>
+                    <tr><td><strong>S / DATA / R</strong></td><td><code>D7</code></td><td>GPIO 13</td><td>Sinyal SPI Master Out Data</td></tr>
+                    <tr><td><strong>GND</strong></td><td><code>GND</code></td><td>GND</td><td>Ground Bersama Wajib Tersambung</td></tr>
+                </tbody>
+            </table>
+
+            <div class="notice-box">
+                <strong>Periferal Tambahan ESP8266 P10:</strong><br>
+                • <strong>RTC DS3231:</strong> SDA ke <code>D2 (GPIO 4)</code>, SCL ke <code>D1 (GPIO 5)</code>, VCC <code>5V/3.3V</code>, GND <code>GND</code>.<br>
+                • <strong>DFPlayer Mini:</strong> TX DFPlayer ke RX ESP8266, RX DFPlayer (via R 1kΩ) ke TX ESP8266. VCC <code>5V</code>, GND <code>GND</code>.<br>
+                • <strong>Buzzer Aktif 5V:</strong> Positif (+) ke <code>D4 (GPIO 2)</code>, negatif (-) ke <code>GND</code>.
+            </div>
+        </div>
+
+        <!-- SKEMA 2: HUIDU HD-WF1 (ESP32-S2) + P10 MONO -->
+        <div class="wiring-card">
+            <div class="wiring-header">
+                <div class="wiring-badge">2</div>
+                <div>
+                    <h3>Skema Wiring: Huidu HD-WF1 (ESP32-S2) + Panel P10 Monokrom (HUB12)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Menggunakan controller pabrikan Huidu HD-WF1 dengan performa tinggi & RTC on-board.</p>
+                </div>
+            </div>
+
+            <div class="notice-box" style="border-left-color: #ef4444; background: rgba(239, 68, 68, 0.1); color: #fca5a5;">
+                <strong style="color:#f87171;">⚠️ PERINGATAN KERAS SEBELUM MEMASANG KABEL:</strong><br>
+                <strong>JANGAN PERNAH MENANCAPKAN KABEL PIPIH LURUS (16-Pin Flat Ribbon Cable 1:1) LANGSUNG DARI BOARD HD-WF1 KE PANEL P10!</strong><br>
+                <em>Penyebab:</em> Soket pada HD-WF1 adalah tipe <strong>HUB75</strong>, sedangkan soket panel P10 adalah tipe <strong>HUB12</strong> (di mana seluruh pin ganjil 3, 5, 7, 9, 11, 13, 15 di-ground-kan). Jika dicolok lurus, pin GPIO chip ESP32-S2 akan <strong>korsleting langsung ke GND</strong>.<br>
+                <strong>SOLUSI:</strong> Cukup gunakan <strong>7 kabel jumper Female-to-Female</strong> sesuai tabel koneksi resmi berikut:
+            </div>
+
+            <table class="wiring-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Sinyal P10</th>
+                        <th>Pin Header HD-WF1 (HUB75)</th>
+                        <th>Label Silk HD-WF1</th>
+                        <th>GPIO ESP32-S2</th>
+                        <th>Pin Panel P10 (HUB12)</th>
+                        <th>Fungsi Sinyal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td><strong>OE / EN</strong></td><td><code>Pin 15</code></td><td><code>OE</code></td><td>GPIO 35</td><td><code>Pin 1 (OE)</code></td><td>Output Enable / PWM Kecerahan</td></tr>
+                    <tr><td>2</td><td><strong>A</strong></td><td><code>Pin 9</code></td><td><code>A</code></td><td>GPIO 39</td><td><code>Pin 2 (A)</code></td><td>Pemilih Baris A (1/4S)</td></tr>
+                    <tr><td>3</td><td><strong>B</strong></td><td><code>Pin 10</code></td><td><code>B</code></td><td>GPIO 38</td><td><code>Pin 4 (B)</code></td><td>Pemilih Baris B (1/4S)</td></tr>
+                    <tr><td>4</td><td><strong>CLK</strong></td><td><code>Pin 13</code></td><td><code>CLK</code></td><td>GPIO 34</td><td><code>Pin 8 (CLK)</code></td><td>Shift Clock Pulses</td></tr>
+                    <tr><td>5</td><td><strong>LAT / STB</strong></td><td><code>Pin 14</code></td><td><code>LAT</code></td><td>GPIO 33</td><td><code>Pin 10 (LAT)</code></td><td>Latch Pengunci Data</td></tr>
+                    <tr><td>6</td><td><strong>R / DATA</strong></td><td><code>Pin 1</code></td><td><code>R1</code></td><td>GPIO 2</td><td><code>Pin 12 (R)</code></td><td>Serial Data Masuk</td></tr>
+                    <tr><td>7</td><td><strong>GND</strong></td><td><code>Pin 4 / 16</code></td><td><code>GND</code></td><td>GND</td><td><code>Pin 3, 5, atau GND</code></td><td>Ground Bersama (Wajib)</td></tr>
+                </tbody>
+            </table>
+
+            <div class="success-box">
+                <strong>Keunggulan & Periferal On-Board HD-WF1:</strong><br>
+                • <strong>RTC On-Board:</strong> Chip RTC (PCF8563 / BM8563) sudah tertanam langsung di PCB HD-WF1 pada <code>SDA GPIO 41 & SCL GPIO 42</code>. Lo <em>nggak perlu lagi beli/rakit modul RTC DS3231 eksternal</em>!<br>
+                • <strong>DFPlayer Mini (UART1):</strong> Sambungkan RX DFPlayer (via R 1kΩ) ke TX HD-WF1 <code>GPIO 17</code>, dan TX DFPlayer ke RX HD-WF1 <code>GPIO 18</code>.<br>
+                • <strong>Buzzer:</strong> Terhubung ke <code>GPIO 12</code> (Pin 8 header HUB75).
+            </div>
+        </div>
+
+        <!-- SKEMA 3: ESP32 + P5 RGB / P2.5 (HUB75) -->
+        <div class="wiring-card">
+            <div class="wiring-header">
+                <div class="wiring-badge">3</div>
+                <div>
+                    <h3>Skema Wiring: ESP32 DevKit / S2 / S3 + P5 RGB & P2.5 (HUB75 DMA)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Untuk display Full Color resolusi tinggi P5 RGB (Scan 1/16S) & P2.5 RGB (Scan 1/32S).</p>
+                </div>
+            </div>
+
+            <table class="wiring-table">
+                <thead>
+                    <tr><th>Pin Soket HUB75 (Panel)</th><th>Pin ESP32 DevKit</th><th>Keterangan Jalur</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>R1, G1, B1</strong></td><td><code>GPIO 25, 26, 27</code></td><td>Data Warna Bagian Atas</td></tr>
+                    <tr><td><strong>R2, G2, B2</strong></td><td><code>GPIO 14, 12, 13</code></td><td>Data Warna Bagian Bawah</td></tr>
+                    <tr><td><strong>A, B, C, D</strong> (Line Select)</td><td><code>GPIO 23, 19, 5, 17</code></td><td>Decoder Baris Scan 1/16S (P5)</td></tr>
+                    <tr><td><strong>E</strong> (Scan 1/32S P2.5)</td><td><code>GPIO 18</code></td><td>Decoder Baris Tambahan 1/32S (P2.5 64x64)</td></tr>
+                    <tr><td><strong>LAT / STB (Latch)</strong></td><td><code>GPIO 4</code></td><td>Pengunci Data Baris</td></tr>
+                    <tr><td><strong>OE (Output Enable)</strong></td><td><code>GPIO 15</code></td><td>PWM Pengatur Kecerahan Layar</td></tr>
+                    <tr><td><strong>CLK (Clock)</strong></td><td><code>GPIO 16</code></td><td>Sinyal Shift Clock DMA</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SKEMA 4: ESP8266 + LCD KARAKTER -->
+        <div class="wiring-card">
+            <div class="wiring-header">
+                <div class="wiring-badge">4</div>
+                <div>
+                    <h3>Skema Wiring: ESP8266 + LCD Karakter (16x2 & 20x4 I2C)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Varian meja mihrab / jam dinding hemat daya (< 2 Watt).</p>
+                </div>
+            </div>
+
+            <table class="wiring-table">
+                <thead>
+                    <tr><th>Komponen</th><th>Pin Modul</th><th>Pin ESP8266</th><th>Keterangan</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>LCD I2C (16x2 / 20x4)</strong></td><td>SDA, SCL, VCC, GND</td><td><code>D2, D1, 5V, GND</code></td><td>Alamat I2C: <code>0x27 / 0x3F</code>. Setel trimpot kontras di belakang LCD.</td></tr>
+                    <tr><td><strong>RTC DS3231</strong></td><td>SDA, SCL, VCC, GND</td><td><code>D2, D1, 5V, GND</code></td><td>Terhubung paralel pada pin I2C D1 & D2 yang sama.</td></tr>
+                    <tr><td><strong>DFPlayer Mini</strong></td><td>TX, RX, VCC, GND</td><td><code>RX (GPIO 3), TX (GPIO 1), 5V, GND</code></td><td>Audio Murottal & Adzan ke speaker.</td></tr>
+                    <tr><td><strong>Buzzer 5V</strong></td><td>Positif (+), Negatif (-)</td><td><code>D4 (GPIO 2), GND</code></td><td>Buzzer alarm masuk waktu sholat.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SKEMA 5: POWER SUPPLY & GROUNDING -->
+        <div class="wiring-card">
+            <div class="wiring-header">
+                <div class="wiring-badge">⚡</div>
+                <div>
+                    <h3>Manajemen Catu Daya (Power Supply) & Aturan Grounding Wajib</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Kunci utama JWS awet, tidak sering reset sendiri, dan LED tidak berkedip redup.</p>
+                </div>
+            </div>
+
+            <ul class="tips-list">
+                <li><strong>Gunakan Power Supply Berkualitas:</strong> P10 Mono (5V 5A s/d 20A) & P5 RGB (5V 20A+ anti-drop).</li>
+                <li><strong>Golden Rule (Common Ground):</strong> Semua pin GND (GND Power Supply, GND Panel LED, GND Mikrokontroler, dan GND DFPlayer) <strong>WAJIB disatukan menjadi satu titik ground bersama</strong>.</li>
+                <li><strong>Jalur Daya Terpisah:</strong> Tarik kabel daya 5V tebal langsung dari PSU ke panel LED. Jangan memberi makan daya panel LED dari pin 5V mikrokontroler!</li>
+                <li><strong>Resistor 1kΩ pada RX DFPlayer Mini:</strong> Pasang resistor 1kΩ seri pada jalur pin RX modul DFPlayer untuk meredam noise desis (hiss) audio.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION 6: TUTORIAL FLASHING BOOTLOADER & FIRMWARE -->
+    <section id="flashing" class="content-section" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <h2>Panduan Flashing Bootloader & Firmware ESP32</h2>
+            <p>Langkah mengisi bootloader, partisi, dan firmware jam sholat ke ESP32, ESP32-S2 (HD-WF1), dan ESP32-S3 dari nol.</p>
+        </div>
+
+        <div class="flash-card">
+            <div class="flash-header">
+                <div class="flash-badge">1</div>
+                <div>
+                    <h3>Peta Alamat Flash (Memory Offset Map)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Alamat heksadesimal wajib pada memori flash agar chip tidak bootloop.</p>
+                </div>
+            </div>
+
+            <h4 style="color:#fbbf24; margin-top:1rem;">A. Varian ESP32-S2 (Huidu HD-WF1)</h4>
+            <table class="flash-table">
+                <thead><tr><th>Nama File</th><th>Alamat Heksadesimal (Offset)</th><th>Keterangan</th></tr></thead>
+                <tbody>
+                    <tr><td><code>bootloader.bin</code></td><td><code>0x1000</code></td><td>Bootloader resmi ESP32-S2</td></tr>
+                    <tr><td><code>partitions.bin</code></td><td><code>0x8000</code></td><td>Tabel partisi</td></tr>
+                    <tr><td><code>boot_app0.bin</code></td><td><code>0xe000</code></td><td>Data inisialisasi boot OTA</td></tr>
+                    <tr><td><code>jamsholatp10s2.ino.bin</code></td><td><code>0x10000</code></td><td>Firmware Jam Sholat P10 HD-WF1 Almahdi</td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="color:#fbbf24; margin-top:2rem;">B. Varian ESP32 DevKit (P5 RGB / P2.5)</h4>
+            <table class="flash-table">
+                <thead><tr><th>Nama File</th><th>Alamat Heksadesimal (Offset)</th><th>Keterangan</th></tr></thead>
+                <tbody>
+                    <tr><td><code>bootloader.bin</code></td><td><code>0x1000</code></td><td>Bootloader dual-core ESP32</td></tr>
+                    <tr><td><code>partitions.bin</code></td><td><code>0x8000</code></td><td>Tabel partisi OTA</td></tr>
+                    <tr><td><code>boot_app0.bin</code></td><td><code>0xe000</code></td><td>Data inisialisasi boot OTA</td></tr>
+                    <tr><td><code>firmware_esp32_rgb.bin</code></td><td><code>0x10000</code></td><td>Firmware Jam Sholat RGB Almahdi</td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="color:#fbbf24; margin-top:2rem;">C. Varian ESP32-S3 (HD-WF2 / DevKit S3)</h4>
+            <table class="flash-table">
+                <thead><tr><th>Nama File</th><th>Alamat Heksadesimal (Offset)</th><th>Keterangan</th></tr></thead>
+                <tbody>
+                    <tr><td><code>bootloader.bin</code></td><td><code>0x0000</code></td><td><em>Catatan:</em> Bootloader S3 dimulai dari alamat 0x0</td></tr>
+                    <tr><td><code>partitions.bin</code></td><td><code>0x8000</code></td><td>Tabel partisi</td></tr>
+                    <tr><td><code>boot_app0.bin</code></td><td><code>0xe000</code></td><td>Data inisialisasi boot OTA</td></tr>
+                    <tr><td><code>firmware_s3_rgb.bin</code></td><td><code>0x10000</code></td><td>Firmware Jam Sholat S3 DMA</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flash-card">
+            <div class="flash-header">
+                <div class="flash-badge">2</div>
+                <div>
+                    <h3>Langkah Flashing via GUI (Espressif Flash Download Tool)</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Metode resmi termudah untuk pemula & teknisi.</p>
+                </div>
+            </div>
+
+            <ol class="step-list">
+                <li>Buka software <strong>flash_download_tool_xxx.exe</strong>.</li>
+                <li>Pilih ChipType (<code>ESP32-S2</code>, <code>ESP32</code>, atau <code>ESP32-S3</code>), WorkMode: <code>develop</code>, LoadMode: <code>uart</code>.</li>
+                <li>Masukkan ke-4 baris file binary di atas beserta alamat heksadesimalnya (centang checklist di sebelah kirinya).</li>
+                <li>Atur parameter: SPI SPEED = <strong>80MHz</strong>, SPI MODE = <strong>DIO</strong>, FLASH SIZE = <strong>32Mbit (4MB)</strong>.</li>
+                <li>Pilih <strong>COM Port</strong> USB modul dan set <strong>BAUD: 921600</strong> (atau <strong>115200</strong>).</li>
+                <li><strong>Masuk Mode Download:</strong> Tahan tombol <strong>BOOT (IO0)</strong> pada board, colok kabel USB (atau tekan tombol RESET sekali), lalu lepas tombol BOOT.</li>
+                <li>Klik tombol <strong>START</strong> & tunggu hingga status bar hijau berubah menampilkan tulisan <strong>FINISH</strong>.</li>
+                <li>Tekan tombol <strong>RESET (EN)</strong> pada board. Selesai! Modul langsung aktif dan memancarkan Wi-Fi JWS!</li>
+            </ol>
+
+            <p style="color:#fbbf24; font-weight:600; margin-top:2rem;">Opsi Perintah 1-Baris Command Line (esptool.py):</p>
+            <div class="code-command">esptool.py --chip esp32s2 --port COM3 --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 jamsholatp10s2.ino.bin</div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: LISENSI & FIRMWARE BOT -->
     <section id="lisensi" class="license-section">
         <div class="license-content">
             <h2>Dapatkan Firmware & Lisensi Resmi via Bot Telegram</h2>
@@ -144,6 +501,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer id="kontak">
         <div class="footer-content">
             <div class="footer-brand">
